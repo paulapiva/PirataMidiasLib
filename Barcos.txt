@@ -1,0 +1,61 @@
+var brokenBoatAnimation = [];
+var brokenBoatJSON, brokenBoatIMG;
+
+var waterSplashAnimation = [];
+var waterSplashJSON, waterSplashIMG;
+
+no Preload:
+brokenBoatJSON = loadJSON("assets/boat/brokenBoat.json");
+  brokenBoatIMG = loadImage("assets/boat/brokenBoat.png");
+
+  waterSplashJSON = loadJSON("assets/waterSplash/waterSplash.json");
+  waterSplashIMG = loadImage("assets/waterSplash/waterSplash.png");
+
+
+no draw:
+var brokenBoatFrames = brokenBoatJSON.frames;
+  for (var i = 0; i < brokenBoatFrames.length; i++) {
+    var pos = brokenBoatFrames[i].position;
+    var img = brokenBoatIMG.get(pos.x, pos.y, pos.w, pos.h);
+    brokenBoatAnimation.push(img);
+  }
+
+  var waterSplashFrames = waterSplashJSON.frames;
+  for (var i = 0; i < waterSplashFrames.length; i++) {
+    var pos = waterSplashFrames[i].position;
+    var img = waterSplashIMG.get(pos.x, pos.y, pos.w, pos.h);
+    waterSplashAnimation.push(img);
+  }
+
+
+
+
+
+
+
+Complemento Index.html
+<script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./lib/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./lib/sweetalert.css" />
+
+
+function gameOver() {
+  swal({
+      title: `Fim de Jogo!!!`,
+      text: "Obrigada por jogar!!",
+      imageUrl:
+        "https://raw.githubusercontent.com/whitehatjr/PiratesInvasion/main/assets/boat.png",
+      imageSize: "150x150",
+      confirmButtonText: "Jogar Novamente"
+    },
+    function(isConfirm) {
+      if (isConfirm) {
+        location.reload();
+      }
+    }
+  );
+}
