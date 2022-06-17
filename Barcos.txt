@@ -1,3 +1,19 @@
+shoot() {
+    Matter.Body.setStatic(this.body, false); 
+  
+    var newAngle = cannon.angle - 28;
+    newAngle = newAngle * (3.14/180); 
+  
+    var velocidade = p5.Vector.fromAngle(newAngle);
+    velocidade.mult(0.5); 
+
+     Matter.Body.setVelocity(this.body, {
+      x: velocidade.x * (180 / 3.14),
+      y: velocidade.y * (180 / 3.14),
+    });
+    
+    
+    
 var brokenBoatAnimation = [];
 var brokenBoatJSON, brokenBoatIMG;
 
